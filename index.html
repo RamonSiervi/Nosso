@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lis</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;800&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      background: #0f0f14;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height:100vh;
+    }
+
+    .container {
+      max-width: 760px;
+      text-align: center;
+      padding: 40px 20px;
+      position: relative;
+    }
+
+    /* BOTÃO CLEAN */
+    .music-btn {
+      position: absolute;
+      top: 0;
+      left: -50px;
+      font-size: 14px;
+      opacity: 0.6;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .music-btn:hover {
+      opacity: 1;
+    }
+
+    .text {
+      font-family: 'Playfair Display', serif;
+      font-size: 21px;
+      line-height: 1.9;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    .text strong {
+      font-size: 26px;
+      display:block;
+      margin-top:20px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity:0; transform:translateY(20px); }
+      to { opacity:1; transform:translateY(0); }
+    }
+
+    .video-box {
+      margin-top:40px;
+      width:100%;
+      max-width:380px;
+      aspect-ratio:1/1;
+      margin-left:auto;
+      margin-right:auto;
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:0 10px 40px rgba(0,0,0,0.5);
+    }
+
+    video {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .floating {
+      position:fixed;
+      bottom:20px;
+      right:20px;
+      width:80px;
+      height:80px;
+      border-radius:14px;
+      overflow:hidden;
+      opacity:0.9;
+    }
+
+    iframe {
+      position:fixed;
+      width:0;
+      height:0;
+      border:0;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- BOTÃO DISCRETO -->
+    <div class="music-btn" onclick="toggleMusic()" id="btn">
+      ♫
+    </div>
+
+    <div class="text">
+      Lis… eu juro, tem dias que eu paro do nada e penso em você como se você estivesse aqui do meu lado.<br><br>
+
+      É estranho explicar, porque a gente tá longe, mas ao mesmo tempo você tá tão presente em mim...<br><br>
+
+      Nas coisas simples… qualquer coisinha já me lembra você.<br><br>
+
+      Eu tô aprendendo a gostar de você de um jeito que nunca aconteceu antes...<br><br>
+
+      E quanto mais eu sinto isso, mais eu tenho certeza que você é diferente…<br><br>
+
+      Às vezes eu fico imaginando como seria te encontrar…<br><br>
+
+      <strong>Porque, no fim… é você, Lis.</strong>
+    </div>
+
+    <div class="video-box">
+      <video autoplay muted loop playsinline>
+        <source src="Esse.mp4" type="video/mp4">
+      </video>
+    </div>
+
+  </div>
+
+  <!-- MINI -->
+  <div class="floating">
+    <video autoplay muted loop playsinline>
+      <source src="Esse.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- PLAYER -->
+  <iframe id="player"
+    src="https://www.youtube.com/embed/Jqt2yvDEgFE?autoplay=1&loop=1&playlist=Jqt2yvDEgFE&controls=0">
+  </iframe>
+
+  <script>
+    let playing = true;
+
+    function toggleMusic() {
+      const player = document.getElementById("player");
+      const btn = document.getElementById("btn");
+
+      if (playing) {
+        player.src = "";
+        btn.style.opacity = "0.3";
+        playing = false;
+      } else {
+        player.src = "https://www.youtube.com/embed/Jqt2yvDEgFE?autoplay=1&loop=1&playlist=Jqt2yvDEgFE";
+        btn.style.opacity = "1";
+        playing = true;
+      }
+    }
+  </script>
+
+</body>
+</html>
