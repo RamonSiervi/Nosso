@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lis</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;800&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color:#fff;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+/* FUNDO */
+body::before {
+  content:"";
+  position:fixed;
+  inset:0;
+  background: radial-gradient(circle at center, #1a1a22, #0a0a0f);
+  animation: breathe 8s ease-in-out infinite;
+  z-index:-1;
+}
+
+@keyframes breathe {
+  0%,100% { transform:scale(1); opacity:0.9; }
+  50% { transform:scale(1.06); opacity:1; }
+}
+
+.container {
+  max-width:760px;
+  text-align:center;
+  padding:40px 20px;
+  position:relative;
+}
+
+.music-btn {
+  position:absolute;
+  top:0;
+  left:-40px;
+  font-size:14px;
+  opacity:0.5;
+  cursor:pointer;
+}
+
+.text {
+  font-family:'Playfair Display', serif;
+  font-size:21px;
+  line-height:1.9;
+  white-space:pre-line;
+}
+
+/* BRILHO */
+.lis {
+  background: linear-gradient(90deg,#fff,#aaa,#fff);
+  -webkit-background-clip:text;
+  color:transparent;
+  animation:shine 4s linear infinite;
+}
+
+@keyframes shine {
+  0%{background-position:0%;}
+  100%{background-position:200%;}
+}
+
+.text strong {
+  font-size:26px;
+  display:block;
+  margin-top:20px;
+}
+
+/* VIDEO */
+.video-box {
+  margin-top:40px;
+  width:100%;
+  max-width:380px;
+  aspect-ratio:1/1;
+  margin:auto;
+  border-radius:18px;
+  overflow:hidden;
+}
+
+video {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.floating {
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  width:80px;
+  height:80px;
+  border-radius:14px;
+  overflow:hidden;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="music-btn" onclick="toggleMusic()">♫</div>
+
+<div class="text">
+<span class="lis">Lis</span>… eu ando pensando em você o tempo todo, e não é nem exagero.
+
+É tipo assim, eu tô fazendo qualquer coisa  do nada você vem na minha cabeça. Às vezes eu até paro, fico viajando imaginando você, imaginando a gente… e quando percebo já fiquei mó tempão só nisso. Você simplesmente tomou um espaço aqui que eu nem vi acontecer.
+
+Mesmo longe, você tá presente demais em mim. Em detalhe bobo, em silêncio, em música, em qualquer momento mais tranquilo… parece que minha mente sempre dá um jeito de voltar pra você.
+
+E o mais doido é que eu tô gostando disso. Tô aprendendo a gostar de você de um jeito leve, sem pressão… só sentindo mesmo. E quanto mais eu penso, mais eu sinto. E quanto mais eu sinto, mais eu quero você perto.
+
+Eu fico imaginando como vai ser quando a gente se ver de verdade… teu jeito, teu sorriso, o clima do momento… acho que eu nem vou saber reagir direito, mas ao mesmo tempo vai fazer todo sentido.
+
+E eu quero muito que isso aconteça. Muito mesmo. Não é só ideia ou vontade da hora… eu vou me esforçar pra te ver ainda esse ano, pra estar perto de você de verdade. Porque não faz sentido sentir tudo isso e só deixar pra depois.
+
+Eu não quero só pensar em você… eu quero te encontrar, quero viver isso.
+
+Enquanto esse dia não chega, eu sigo aqui… pensando em você mais do que deveria, mais do que consigo controlar. E, sendo bem sincero… eu nem tô tentando parar.
+
+<strong>Porque no fim, é você, <span class="lis">Lis</span>. E você já virou parte dos meus pensamentos de um jeito que não tem mais volta.</strong>
+</div>
+
+<div class="video-box">
+<video autoplay muted loop playsinline>
+<source src="Esse.mp4" type="video/mp4">
+</video>
+</div>
+
+</div>
+
+<div class="floating">
+<video autoplay muted loop playsinline>
+<source src="Esse.mp4" type="video/mp4">
+</video>
+</div>
+
+<!-- 🎵 AUDIO REAL -->
+<audio id="music" autoplay loop>
+  <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const music = document.getElementById("music");
+music.volume = 0.15; // volume baixo
+
+function toggleMusic() {
+  if (music.paused) {
+    music.play();
+  } else {
+    music.pause();
+  }
+}
+
+/* força autoplay após interação mínima */
+document.body.addEventListener("click", () => {
+  music.play();
+}, { once: true });
+</script>
+
+</body>
+</html>
